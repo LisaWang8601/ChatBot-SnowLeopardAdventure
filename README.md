@@ -1,21 +1,12 @@
-# <a href="https://github.com/rhildred/es6-twilio-chatbot" target="_blank">es6-twilio-chatbot</a>
+# <a href="https://github.com/LisaWang8601/ChatBot-SnowLeopardAdventure" target="_blank">es6-twilio-chatbot-Snow-Leopard-Adventure</a>
 
-I got the user interface for the web from a student of mine, Pat Wilken.
+The main structure is from <a href="https://github.com/rhildred/es6-twilio-chatbot" target="_blank">es6-twilio-chatbot</a>
+The user interface for the web was from Pat Wilken.
 
-A chatbot written in es6 and vs6 for twilio and testing on the web. The important files are index.js and game.js.
+THe chatbot is written in es6 and vs6 for twilio and can be tested on the web. The important files are indexSnowLeopard.js and GameSnowLeopard.js.
 
-A popular theme for the upcoming Halloween holiday is to make haunted house simulations. You will make a choose your own adventure for a haunted house presented as a Twilio chatbot. 
+This was done as an assignment for the course PROG8110 Winter 2019 at ... college.
 
-Marking
------
-
-|Element|Out Of|
-|---|---|
-|get a game or choose your own adventure in es6| 50|
-|multiplayer - each person plays their own game against the bot.| 10|
-|story elements or states|1 each up to 20|
-|spelling and grammar|10|
-|on time|10|
 
 
 
