@@ -5,7 +5,7 @@ The user interface for the web was from Pat Wilken.
 
 THe chatbot is written in es6 and vs6 for twilio and can be tested on the web. The important files are indexSnowLeopard.js and GameSnowLeopard.js.
 
-This was done as an assignment for the course PROG8110 Winter 2019 at ... college.
+This was done as an assignment for a mobile app development course.
 
 
 
