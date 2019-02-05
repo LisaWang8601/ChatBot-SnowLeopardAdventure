@@ -19,7 +19,8 @@ const GameState = Object.freeze({
     SMALL_PREY:Symbol("smallPrey"),
     GRASS: Symbol("grass"),
     TIRED: Symbol("tired"),
-    FARM_WALK:Symbol("farmOrWalk")
+    FARM_WALK: Symbol("farmOrWalk"),
+    LEFTOVER: Symbol("leftover")
 });
 
 export default class GameSnowLeopard{
@@ -167,7 +168,7 @@ makeAMove(sInput){
                 else if (Math.pow((-nInput), k) > Math.pow(j, k)){      
                     // the number given by user is compared with a random number to decide which state is next.  
                     if(this.iPreserve == 1){
-                        sReply = "Wow! You took down a yak! Now you are full. Would you rest near your left over or walk around to guard your territory."
+                        sReply = "Wow! You took down a yak! Now you are full. Would you rest near your leftover or walk around to guard your territory."
                         this.stateCur = GameState.FULL;   // if - == 1, it's the yak 
                         break;
                     }
@@ -201,11 +202,8 @@ makeAMove(sInput){
                         break;
                     }
                     else if (sInput.toLowerCase().match("rest")) { 
-                        i = Math.ceil(Math.random()*6); 
-                        this.iPreserve = i;
-                        sReply = "You are resting and enjoying the view from the top of a cliff. Now you see. " 
-                                +   this.aAnimals[i-1] + " wondering under the cliff. Would you jump on it or would you stay on the cliff?";
-                        this.stateCur = GameState.CLIFF;
+                        sReply = "Now you've consumed all your leftover. Would you stay on the cliff or go hunting again?";
+                        this.stateCur = GameState.LEFTOVER;
                     break;
                     }
                     else {
@@ -236,7 +234,7 @@ makeAMove(sInput){
                         this.stateCur = GameState.FARM_WALK;
                         break;
                     }
-                    else if(sInput.toLowerCase().match("wait")){
+                    else if(sInput.toLowerCase().match("wait") || sInput.toLowerCase().match("stay")){
                         i = Math.ceil(Math.random()*6); 
                         this.iPreserve = i;
                         sReply ="You are resting and enjoying the view from the top of a cliff. Now you see. " 
@@ -345,6 +343,22 @@ makeAMove(sInput){
                     else {
                         sReply = "Your answer needs to contain go, farm, or walk, please.";
                         this.stateCur = GameState.FARM_WALK;
+                        break;
+                    }
+                case GameState.LEFTOVER:
+                    if(sInput.toLowerCase().match("stay") || sInput.toLowerCase().match("beside")){
+                        sReply = "Now you consumed all the leftover food and become hungary again. Would you wait for prey on top of the cliff or go hunting?"; 
+                        this.stateCur = GameState.HUNGARY;
+                        break;
+                    }
+                    else if(sInput.toLowerCase().match("go")){
+                        sReply ="You see a man walking in the woods. Would you growl at him or hide and be quiet?";
+                        this.stateCur = GameState.HUNTING;
+                        break;
+                    } 
+                    else {
+                        sReply = "Your answer needs to contain ... or ..., please.";
+                        this.stateCur = GameState.LEFTOVER;
                         break;
                     }
             }     
