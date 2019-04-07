@@ -2,7 +2,7 @@
 const GameState = Object.freeze({
     WELCOMING: Symbol("welcoming"),
     NEW_GAME: Symbol("new_game"),
-    HUNGARY: Symbol("hungary"),
+    HUNGRY: Symbol("hungry"),
     CLIFF: Symbol("cliff"), 
     NUMBER: Symbol("number"), 
     HUNTER:  Symbol("hunter"), 
@@ -11,7 +11,7 @@ const GameState = Object.freeze({
     HIDE: Symbol("hide"), 
     MISS_TARGET: Symbol("miss_target"),  
     FARM: Symbol("farm"), 
-    STILL_HUNGARY: Symbol("stillHungary"), 
+    STILL_HUNGRY: Symbol("stillHungry"), 
     FULL: Symbol("full"),  
     HUNTING: Symbol("hunting"),   
     YAK: Symbol("yak"), 
@@ -41,8 +41,8 @@ makeAMove(sInput){
                  break;
             case GameState.NEW_GAME:
                 if((sInput.toLowerCase().match("yes"))||(sInput.toLowerCase().match("play"))){
-                    this.stateCur = GameState.HUNGARY;
-                    sReply = "Welcome to the adventure. Imagine you are a Snow Leopard in the Himalayas. You are hungary. Would you go hunting or wait for prey on top of a cliff?";   // highlight "cliff"  and hunting
+                    this.stateCur = GameState.HUNGRY;
+                    sReply = "Welcome to the adventure. Imagine you are a Snow Leopard in the Himalayas. You are hungry. Would you go hunting or wait for prey on top of a cliff?";   // highlight "cliff"  and hunting
                     break;
                 }
                 else {
@@ -66,7 +66,7 @@ makeAMove(sInput){
                 }
                 else {
                     sReply  = "Your answer needs to contain the word go or wait."; 
-                    this.stateCur = GameState.HUNGARY;
+                    this.stateCur = GameState.HUNGRY;
                     break;
                 }
             case GameState.CLIFF:
@@ -147,7 +147,7 @@ makeAMove(sInput){
                 else if (Math.pow((-nInput), k) > Math.pow(j, k)){      
                     // the number given by user is  compared with a random number to decide the users wins or loses.  
                         sReply = "Wow! You successfully defended your territory! Your opponent lost the fight and ran away. Now would you go hunting or rest on top of the cliff?"
-                        this.stateCur = GameState.HUNGARY;   // if case 1 n 2 go to same state, delete one break?
+                        this.stateCur = GameState.HUNGRY;   // if case 1 n 2 go to same state, delete one break?
                         break;
                 }
                 else {
@@ -179,7 +179,7 @@ makeAMove(sInput){
                     }
                     else {
                         sReply = "You got it! But it's too small. You are still hungry. Would you go hunting, or stay put waiting?"
-                        this.stateCur = GameState.STILL_HUNGARY;
+                        this.stateCur = GameState.STILL_HUNGRY;
                         break;
                     }
                 }
@@ -250,7 +250,7 @@ makeAMove(sInput){
                     }
                     else {
                         sReply = "Your answer needs to contain a verb in above text, please.";
-                        this.stateCur = GameState.STILL_HUNGARY;
+                        this.stateCur = GameState.STILL_HUNGRY;
                         break;
                     }
                 case GameState.FARM:
@@ -262,7 +262,7 @@ makeAMove(sInput){
                     }
                     else if(sInput.toLowerCase().match("abandon")){
                         sReply ="The farmer was after you with a gun. Fortunately you still got away. Now would you rest and wait for prey or find some edible grass?";
-                        this.stateCur = GameState.STILL_HUNGARY;
+                        this.stateCur = GameState.STILL_HUNGRY;
                         break;
                     } 
                     else if (sInput.toLowerCase().match("carry")){
@@ -348,7 +348,7 @@ makeAMove(sInput){
                 case GameState.LEFTOVER:
                     if(sInput.toLowerCase().match("stay") || sInput.toLowerCase().match("beside")){
                         sReply = "Now you consumed all the leftover food and become hungary again. Would you wait for prey on top of the cliff or go hunting?"; 
-                        this.stateCur = GameState.HUNGARY;
+                        this.stateCur = GameState.HUNGRY;
                         break;
                     }
                     else if(sInput.toLowerCase().match("go")){
